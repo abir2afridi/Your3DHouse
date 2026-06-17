@@ -2,15 +2,12 @@ import { Analytics } from "@vercel/analytics/react"
 
 import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
-import { Perf } from 'r3f-perf'
-import { StrictMode, Suspense } from 'react'
+import { StrictMode, Suspense, useState } from 'react'
 
 import Loader from './Components/Loader.jsx'
+import Header from './Components/Header.jsx'
 import App from './App.jsx'
 import './index.css'
-
-console.log("Hi if you notice a bug please contact me max2002guillon@gmail.com")
-
 
 const isMobile = () => {
     return ( ( window.innerWidth <= 1000 ) && ( window.innerHeight <= 800 ) );
@@ -21,27 +18,29 @@ const root = ReactDOM.createRoot(document.querySelector('#root'))
 const fovForMobile = 100
 const fovForPc = 45
 
-root.render(
+function Root() {
+  const [mode, setMode] = useState('auto')
+
+  return (
     <StrictMode>
-        <Canvas
-            camera={{
-            fov: isMobile() ? fovForMobile : fovForPc,
-            near: 0.1,
-            far: 200,
-            position: [52, 7, 12],
-        }}
-        >
-            <Suspense fallback={<Loader/>}>
-                <App/>   
-            </Suspense>
+      <Header />
+      <Canvas
+          camera={{
+          fov: isMobile() ? fovForMobile : fovForPc,
+          near: 0.1,
+          far: 200,
+          position: [52, 7, 12],
+      }}
+      >
+          <Suspense fallback={<Loader/>}>
+              <App mode={mode} onModeChange={setMode} />   
+          </Suspense>
+      </Canvas>
 
-            {/*<Perf position="top-left" />*/}
-        </Canvas>
-
-        <Analytics/>
-        <div style={{ display: "none" }}>
+      <Analytics/>
+      <div style={{ display: "none" }}>
   <section aria-hidden="true">
-    <h1>Maxime Guillon - Creative Developer</h1>
+    <h1>Abir's House - Creative Developer</h1>
     <h2>Computer Science Student at Bordeaux University</h2>
     <h2>Three.js and React Three Fiber Expert</h2>
     <h2>Specialized in 3D Web Development</h2>
@@ -58,14 +57,14 @@ root.render(
   </section>
   <section aria-hidden="true">
     <p>
-      Welcome to the 3D portfolio of Maxime Guillon. This immersive portfolio has 
+      Welcome to the 3D portfolio of Abir. This immersive portfolio has 
       been created using React Three Fiber and GSAP, with custom 3D models designed 
       in Blender. Explore innovative web experiences that blend creativity and technology.
     </p>
   </section>
   <noscript>
     <p>
-      This 3D portfolio of Maxime Guillon showcases creative web development using 
+      This 3D portfolio of Abir showcases creative web development using 
       React Three Fiber, Three.js, and GSAP. Please enable JavaScript to explore 
       the immersive experience.
     </p>
@@ -75,7 +74,7 @@ root.render(
 
 
     </StrictMode>
+  )
+}
 
-        
-    
-)
+root.render(<Root />)
