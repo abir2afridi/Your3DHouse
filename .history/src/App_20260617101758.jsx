@@ -26,7 +26,7 @@ export default function App() {
             curveRadius={ -50 }
             fontSize={ 5 }
           >
-            Abir's World
+            Maxime's World
         </Text>
       </Float>
 

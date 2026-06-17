@@ -100,7 +100,7 @@ export default function TvScreen(props)
       <mesh 
         position={[0.6, 2.25, -3.48]} 
         scale={[0.09, 0.1, 0.1]}
-        onClick={() => handleClick("https://github.com/abir2afridi/Your3DHouse")}
+        onClick={() => handleClick("https://github.com/sbir2afridi/KameHousePortfolio")}
       >
         <planeGeometry/>
         <meshBasicMaterial  map={sourceTexture} transparent />
@@ -109,7 +109,7 @@ export default function TvScreen(props)
       <mesh 
         position={[0.8, 2.25, -3.48]} 
         scale={[0.09, 0.12, 0.12]}
-        onClick={() => handleClick("abir2afridi@gmail.com")}
+        onClick={() => handleClick("mailto:max2002guillon@gmail.com")}
       >
         <planeGeometry/>
         <meshBasicMaterial  map={workTexture} transparent />
